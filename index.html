@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flexbox</title>
+    <link rel="stylesheet" href="custom/styles/styles.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header>The Flexible Box Module</header>
+            <ul class="toggle">
+                <a href="#Basic_concepts_of_flexbox" class="nav-link">
+                    <li>Basic concepts of flexbox</li>
+                </a>
+                <a href="#The_two_axes_of_flexbox" class="nav-link">
+                    <li>The two axes of flexbox</li>
+                </a>
+                <a href="#Start_and_end_lines" class="nav-link">
+                    <li>Start and end lines</li>
+                </a>
+                <a href="#The_flex_container" class="nav-link">
+                    <li>The flex container</li>
+                </a>
+                <a href="#Multi-line_flex_containers_with_flex-wrap" class="nav-link">
+                    <li>Multi-line flex containers with flex-wrap</li>
+                </a>
+                <a href="#The_flex-flow_shorthand" class="nav-link">
+                    <li>The flex-flow shorthand</li>
+                </a>
+            </ul>
+    </nav>
+    <main id="main-doc">
+        <section id="Basic_concepts_of_flexbox" class="main-section">
+            <header>Basic concepts of flexbox</header>
+            <article>
+                <p>The Flexible Box Module, usually referred to as flexbox, was designed as a one-dimensional layout model, and as a method that could offer space distribution between items in an interface and powerful alignment capabilities. This article gives an outline of the main features of flexbox, which we will be exploring in more detail in the rest of these guides.</p>
+                <p>When we describe flexbox as being one dimensional we are describing the fact that flexbox deals with layout in one dimension at a time — either as a row or as a column. This can be contrasted with the two-dimensional model of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a>, which controls columns and rows together.</p>
+            </article>
+        </section>
+        <section id="The_two_axes_of_flexbox" class="main-section">
+            <header>The two axes of flexbox</header>
+            <article>
+                <p>When working with flexbox you need to think in terms of two axes — the main axis and the cross axis. The main axis is defined by the <span class="mark-pop">flex-direction</span> property, and the cross axis runs perpendicular to it. Everything we do with flexbox refers back to these axes, so it is worth understanding how they work from the outset.</p>
+                <span class="topic">The main axis</span>
+                <p>The main axis is defined by <span class="mark">flex-direction</span>, which has four possible values:</p>
+                <ul>
+                    <li><span class="mark">row</span></li>
+                    <li><span class="mark">row-reverse</span></li>
+                    <li><span class="mark">column</span></li>
+                    <li><span class="mark">column-reverse</span></li>
+                </ul>
+                <p>Should you choose <span class="mark">row</span> or <span class="mark">row-reverse</span>, your main axis will run along the row in the <b>inline direction</b>.</p>
+                <img src="img/1.png" alt="">
+                <p>Choose <span class="mark">column</span> or <span class="mark">column-reverse</span> and your main axis will run from the top of the page to the bottom — in the <b>block direction</b>.</p>
+                <img src="img/2.png" alt="">
+                <span class="topic">The cross axis</span>
+                <p>The cross axis runs perpendicular to the main axis, therefore if your <span class="mark">flex-direction</span> (main axis) is set to <span class="mark">row</span> or <span class="mark">row-reverse</span> the cross axis runs down the columns.</p>
+                <p>If your main axis is <span class="mark">column</span> or <span class="mark">column-reverse</span> then the cross axis runs along the rows.</p>
+                <img src="img/3.png" alt="">
+                <p>Understanding which axis is which is important when we start to look at aligning and justifying flex items; flexbox features properties that align and justify content along one axis or the other.</p>
+            </article>
+        </section>
+        <section id="Start_and_end_lines" class="main-section">
+            <header>Start and end lines</header>
+            <article>
+                <p>Another vital area of understanding is how flexbox makes no assumption about the writing mode of the document. In the past, CSS was heavily weighted towards horizontal and left-to-right writing modes. Modern layout methods encompass the range of writing modes and so we no longer assume that a line of text will start at the top left of a document and run towards the right hand side, with new lines appearing one under the other.</p>
+                <p>You can read more about the relationship between flexbox and the Writing Modes specification in a later article, however the following description should help explain why we do not talk about left and right and top and bottom when we describe the direction that our flex items flow in.</p>
+                <p>If the <span class="mark">flex-direction</span> is <span class="mark">row</span> and I am working in English, then the start edge of the main axis will be on the left, the end edge on the right.</p>
+                <img src="img/4.png" alt="">
+                <p>If I were to work in Arabic, then the start edge of my main axis would be on the right and the end edge on the left.</p>
+                <img src="img/5.png" alt="">
+                <p>In both cases the start edge of the cross axis is at the top of the flex container and the end edge at the bottom, as both languages have a horizontal writing mode.</p>
+                <p>After a while, thinking about start and end rather than left and right becomes natural, and will be useful to you when dealing with other layout methods such as CSS Grid Layout which follow the same patterns.</p>
+            </article>
+        </section>
+        <section id="The_flex_container" class="main-section">
+            <header>The flex container</header>
+            <article>
+                <p>An area of a document laid out using flexbox is called a <b>flex container</b>. To create a flex container, we set the value of the area's container's <span class="mark-pop">display</span> property to <span class="mark">flex</span> or <span class="mark">inline-flex</span>. As soon as we do this the direct children of that container become <b>flex items</b>. As with all properties in CSS, some initial values are defined, so when creating a flex container all of the contained flex items will behave in the following way.</p>
+                <ul>
+                    <li>Items display in a row (the <span class="mark">flex-direction</span> property's default is <span class="mark">row</span>).</li>
+                    <li>The items start from the start edge of the main axis.</li>
+                    <li>The items do not stretch on the main dimension, but can shrink.</li>
+                    <li>The items will stretch to fill the size of the cross axis.</li>
+                    <li>The <span class="mark-pop">flex-basis</span> property is set to <span class="mark">auto</span>.</li>
+                    <li>The <span class="mark-pop">flex-wrap</span> property is set to <span class="mark">nowrap</span>.</li>
+                </ul>
+                <p>he result of this is that your items will all line up in a row, using the size of the content as their size in the main axis. If there are more items than can fit in the container, they will not wrap but will instead overflow. If some items are taller than others, all items will stretch along the cross axis to fill its full size.</p>
+                <p>You can see in the live example below how this looks. Try editing the items or adding additional items in order to test the initial behavior of flexbox.</p>
+                <img src="img/6.png" alt="">
+                <code>
+                    .box {
+                        display: flex;
+                    }
+                </code>
+                <code>
+                    &lt;div class="box"&gt;
+                        &lt;div&gt;One&lt;/div&gt;
+                        &lt;div&gt;Two&lt;/div&gt;
+                        &lt;div&gt;
+                            Three
+                            &lt;br&gt;has
+                            &lt;br&gt;extra
+                            &lt;br&gt;text
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                </code>
+                <span class="topic">Changing flex-direction</span>
+                <p>Adding the <span class="mark-pop">flex-direction</span> property to the flex container allows us to change the direction in which our flex items display. Setting <span class="mark">flex-direction: row-reverse</span> will keep the items displaying along the row, however the start and end lines are switched.</p>
+                <p>If we change <span class="mark">flex-direction</span> to <span class="mark">column</span> the main axis switches and our items now display in a column. Set <span class="mark">column-reverse</span> and the start and end lines are again switched.</p>
+                <p>The live example below has <span class="mark">flex-direction</span> set to <span class="mark">row-reverse</span>. Try the other values — <span class="mark">row</span>, <span class="mark">column</span> and <span class="mark">column-reverse</span> — to see what happens to the content.</p>
+                <img src="img/7.png" alt="">
+                <code>
+                    .box {
+                        display: flex;
+                        flex-direction: row-reverse;
+                    }
+                </code>
+                <code>
+                    &lt;div class="box"&gt;
+                        &lt;div&gt;One&lt;/div&gt;
+                        &lt;div&gt;Two&lt;/div&gt;
+                        &lt;div&gt;Three&lt;/div&gt;
+                    &lt;/div&gt;
+                </code>
+            </article>
+        </section>
+        <section id="Multi-line_flex_containers_with_flex-wrap" class="main-section">
+            <header>Multi-line flex containers with flex-wrap</header>
+            <article>
+                <p>While flexbox is a one dimensional model, it is possible to cause our flex items to wrap onto multiple lines. In doing so, you should consider each line as a new flex container. Any space distribution will happen across that line, without reference to the lines either side.</p>
+                <p>To cause wrapping behaviour add the property <span class="mark-pop">flex-wrap</span> with a value of <span class="mark">wrap</span>. Now, should your items be too large to all display in one line, they will wrap onto another line. The live sample below contains items that have been given a width, the total width of the items being too wide for the flex container. As <span class="mark">flex-wrap</span> is set to <span class="mark">wrap</span>, the items wrap. Set it to <span class="mark">nowrap</span>, which is also the initial value, and they will instead shrink to fit the container because they are using initial flexbox values that allows items to shrink. Using <span class="mark">nowrap</span> would cause an overflow if the items were not able to shrink, or could not shrink small enough to fit.</p>
+                <img src="img/8.png" alt="">
+                <code>
+                    .box {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                </code>
+                <code>
+                    &lt;div class="box"&gt;
+                        &lt;div&gt;One&lt;/div&gt;
+                        &lt;div&gt;Two&lt;/div&gt;
+                        &lt;div&gt;Three&lt;/div&gt;
+                    &lt;/div&gt;
+                </code>
+                <p>Find out more about wrapping flex items in the guide <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mastering_Wrapping_of_Flex_Items">Mastering Wrapping of Flex Items</a>.</p>
+            </article>
+        </section>
+        <section id="The_flex-flow_shorthand" class="main-section">
+            <header>The flex-flow shorthand</header>
+            <article>
+                <p>You can combine the two properties <span class="mark">flex-direction</span> and <span class="mark">flex-wrap</span> into the <span class="mark-pop">flex-flow</span> shorthand. The first value specified is <span class="mark">flex-direction</span> and the second value is <span class="mark">flex-wrap</span>.</p>
+                <p>In the live example below try changing the first value to one of the allowable values for <span class="mark">flex-direction</span> - <span class="mark">row</span>, <span class="mark">row-reverse</span>, <span class="mark">column</span> or <span class="mark">column-reverse</span>, and also change the second to <span class="mark">wrap</span> and <span class="mark">nowrap</span>.</p>
+                <img src="img/9.png" alt="">
+                <code></code>
+                <code></code>
+            </article>
+        </section>
+    </main>
+
+    <script src="custom/scripts/script.js"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>

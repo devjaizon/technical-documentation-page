@@ -1,0 +1,99 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+nav{
+    padding-top: 1.5rem; 
+    min-width: 250px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+ul > a {
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    padding: .5rem 0;
+    border-bottom: 2px solid gray;
+}
+li{
+    padding-left: .5rem; 
+}
+header{
+    display: block;
+    width: 100%;
+    font-weight: 800;
+}
+section > header {
+    font-size: 1.7rem;
+    color: black;
+}
+section {
+    max-width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-items: center;
+}
+#main-doc {
+    margin-left: 250px;
+    margin-bottom: 110px;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 90%;
+    display: inline-block;
+    margin: auto;
+    padding: 2rem;
+}
+
+.topic {
+    display: inline-block;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    padding: .2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.mark {
+    background-color: rgb(201, 201, 201);
+}
+.mark-pop {
+    background-color: rgb(201, 201, 201);
+    color: rgb(56, 83, 202);
+}
+@media only screen and (max-width: 800px) {
+    body{
+        flex-direction: column;
+    }
+    nav{
+        position: fixed;
+        padding: 0;
+        width: 100%;
+        background-color: white;
+        cursor: pointer;
+    }
+    nav>header {
+        text-align: center;
+        padding: 1rem;
+    }
+    .toggle {
+        display: none;
+    }
+    #main-doc {
+        margin:2.5rem 0;
+    }
+}
